@@ -1,0 +1,22 @@
+/*
+ * iop.proto
+ *
+ * Created: 1/10/2012 2:47:12 AM
+ *  Author: Administrator
+ */
+import "nanopb.proto";
+
+package iop;
+
+message Envelope
+{
+  optional uint64 src=10;
+  optional uint64 dst=20;
+  required uint64 msgCode=30;
+  optional uint64 nonce=40;
+  optional bytes iv=50 [(nanopb).max_size = 16];
+  required bytes msg=60;
+  optional bytes hash=70 [(nanopb).max_size = 20];
+  optional uint64 timestamp=80;
+}
+

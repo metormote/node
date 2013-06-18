@@ -1,0 +1,16 @@
+/*
+ * potentiometer.proto
+ *
+ * Created: 6/18/2012 5:15:20 PM
+ *  Author: Administrator
+ */ 
+package potentiometer;
+
+message In {
+  required uint32 value = 1;
+}
+
+message Out {
+  required uint32 value = 1;
+  optional uint32 temperature = 2;
+}

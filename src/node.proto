@@ -1,0 +1,23 @@
+/*
+ * node.proto
+ *
+ * Created: 2/13/2012 7:42:07 AM
+ *  Author: Administrator
+ */ 
+package node;
+
+message Out
+{
+  optional uint32 batteryLevel=1;
+  optional int32 temperature=2;
+}
+
+
+message In
+{
+  optional uint32 transferInterval=1;
+  optional uint32 leds=2;
+  optional uint32 pollingInterval=3;
+  optional uint32 timeout=4;
+  optional uint32 noOfPolls=5;
+}

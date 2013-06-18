@@ -1,0 +1,29 @@
+package firmware;
+
+message Firmware
+{
+  required uint64 target=10;
+  required uint64 crc=20;
+  required bytes hex=30;
+}
+
+message Update {
+    enum Method {
+      ROM = 0;
+      FLASH = 1;
+      ANT = 2;
+      BLE = 3;
+    }
+    required Method method = 10;
+    required uint64 crc = 20;
+}
+
+message Response {
+    enum Status {
+      SUCCESS = 0;
+      NOT_IN_RANGE = 1;
+      TRANSFER_FAILED = 2;
+    }
+    required Status status = 10;
+    optional int32 errorCode = 20;
+}

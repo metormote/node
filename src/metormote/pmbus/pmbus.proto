@@ -1,0 +1,192 @@
+/*
+ * pmbus.proto
+ *
+ * Created: 1/10/2012 2:47:12 AM
+ *  Author: Administrator
+ */ 
+package pmbus;
+
+
+enum CommandCode {
+    PAGE                    = 0x00;
+    OPERATION               = 0x01;
+    ON_OFF_CONFIG           = 0x02;
+    CLEAR_FAULTS            = 0x03;
+    PHASE                   = 0x04;
+
+    WRITE_PROTECT           = 0x10;
+    STORE_DEFAULT_ALL       = 0x11;
+    RESTORE_DEFAULT_ALL     = 0x12;
+    STORE_DEFAULT_CODE      = 0x13;
+    RESTORE_DEFAULT_CODE    = 0x14;
+    STORE_USER_ALL          = 0x15;
+    RESTORE_USER_ALL        = 0x16;
+    STORE_USER_CODE         = 0x17;
+    RESTORE_USER_CODE       = 0x18;
+    CAPABILITY              = 0x19;
+    QUERY                   = 0x1A;
+
+    VOUT_MODE               = 0x20;  
+    VOUT_COMMAND            = 0x21;
+    VOUT_TRIM               = 0x22;
+    VOUT_CAL_OFFSET         = 0x23;
+    VOUT_MAX                = 0x24;
+    VOUT_MARGIN_HIG         = 0x25;
+    VOUT_MARGIN_LOW         = 0x26;
+    VOUT_TRANSITION_RATE    = 0x27;
+    VOUT_DROOP              = 0x28; 
+    VOUT_SCALE_LOOP         = 0x29;  
+    VOUT_SCALE_MONITOR      = 0x2A;
+
+    COEFFICIENTS            = 0x30;
+    POUT_MAX                = 0x31;  
+    MAX_DUTY                = 0x32;
+    FREQUENCY_SWITC         = 0x33;     
+    VIN_ON                  = 0x35;
+    VIN_OFF                 = 0x36;
+    INTERLEAVE              = 0x37;
+
+    IOUT_CAL_GAIN           = 0x38; 
+    IOUT_CAL_OFFSET         = 0x39;
+    FAN_CONFIG_1_2          = 0x3A;
+    FAN_COMMAND_1           = 0x3B;
+    FAN_COMMAND_2           = 0x3C;
+    FAN_CONFIG_3_4          = 0x3D;
+    FAN_COMMAND_3           = 0x3E;
+    FAN_COMMAND_4           = 0x3F;  
+    VOUT_OV_FAULT_LIMIT     = 0x40;
+    VOUT_OV_FAULT_RESPONSE  = 0x41;
+    VOUT_OV_WARN_LIMIT      = 0x42;
+    VOUT_UV_WARN_LIMIT      = 0x43;
+    VOUT_UV_FAULT_LIMIT     = 0x44;
+    VOUT_UV_FAULT_RESPONSE  = 0x45;
+    IOUT_OC_FAULT_LIMIT     = 0x46;
+    IOUT_OC_FAULT_RESPONSE  = 0x47;
+    IOUT_OC_LV_FAULT_LIMIT  = 0x48;
+    IOUT_OC_LV_FAULT_RESPONSE = 0x49;
+    IOUT_OC_WARN_LIMIT      = 0x4A;
+    IOUT_UC_FAULT_LIMIT     = 0x4B;  
+    IOUT_UC_FAULT_RESPONSE  = 0x4C;
+
+    OT_FAULT_LIMIT          = 0x4F;
+    OT_FAULT_RESPONSE       = 0x50; 
+    OT_WARN_LIMIT           = 0x51;
+    UT_WARN_LIMIT           = 0x52;
+    UT_FAULT_LIMIT          = 0x53;
+    UT_FAULT_RESPONSE       = 0x54;
+    VIN_OV_FAULT_LIMIT      = 0x55;
+    VIN_OV_FAULT_RESPONSE   = 0x56;
+    VIN_OV_WARN_LIMIT       = 0x57;
+    VIN_UV_WARN_LIMIT       = 0x58;
+
+    VIN_UV_FAULT_LIMIT      = 0x59;
+    VIN_UV_FAULT_RESPONSE   = 0x5A;
+    IIN_OC_FAULT_LIMIT      = 0x5B;
+    IIN_OC_FAULT_RESPONSE   = 0x5C;
+    IIN_OC_WARN_LIMIT       = 0x5D;
+    POWER_GOOD_ON           = 0x5E;
+    POWER_GOOD_OFF          = 0x5F;
+    TON_DELAY               = 0x60;
+    TON_RISE                = 0x61;
+    TON_MAX_FAULT_LIMIT     = 0x62;
+    TON_MAX_FAULT_RESPONSE  = 0x63;
+    TOFF_DELAY              = 0x64;
+    TOFF_FALL               = 0x65;
+    TOFF_MAX_WARN_LIMIT     = 0x66;
+    POUT_OP_FAULT_LIMIT     = 0x68;
+    POUT_OP_FAULT_RESPONSE  = 0x69;
+    POUT_OP_WARN_LIMIT      = 0x6A;
+    PIN_OP_WARN_LIMIT       = 0x6B;
+    
+    STATUS_BYTE             = 0x78;
+    STATUS_WORD             = 0x79;
+    STATUS_VOUT             = 0x7A;
+    STATUS_IOUT             = 0x7B;
+    STATUS_INPUT            = 0x7C;
+    STATUS_TEMPERATURE      = 0x7D;
+    STATUS_CML              = 0x7E;
+    STATUS_OTHER            = 0x7F;
+    STATUS_MFR_SPECIFIC     = 0x80;
+    STATUS_FANS_1_2         = 0x81;
+    STATUS_FANS_3_4         = 0x82;
+    READ_VIN                = 0x88;
+    READ_IIN                = 0x89;
+    READ_VCAP               = 0x8A;
+    READ_VOUT               = 0x8B;
+    READ_IOUT               = 0x8C;
+    READ_TEMPERATURE_1      = 0x8D;
+    READ_TEMPERATURE_2      = 0x8E;
+    READ_TEMPERATURE_3      = 0x8F;
+    READ_FAN_SPEED_1        = 0x90;
+    READ_FAN_SPEED_2        = 0x91;
+    READ_FAN_SPEED_3        = 0x92;
+    READ_FAN_SPEED_4        = 0x93;  
+    READ_DUTY_CYCLE         = 0x94;
+    READ_FREQUENCY          = 0x95;
+    READ_POUT               = 0x96;
+    READ_PIN                = 0x97;
+    PMBUS_REVISION          = 0x98;
+    MFR_ID                  = 0x99;
+    MFR_MODEL               = 0x9A;
+    MFR_REVISION            = 0x9B;
+    MFR_LOCATION            = 0x9C;
+    MFR_DATE                = 0x9D; 
+    MFR_SERIAL              = 0x9E;
+ 
+    MFR_VIN_MIN             = 0xA0;
+    MFR_VIN_MAX             = 0xA1;
+    MFR_IIN_MAX             = 0xA2;
+    MFR_PIN_MAX             = 0xA3;
+    MFR_VOUT_MIN            = 0xA4;
+    MFR_VOUT_MAX            = 0xA5;
+    MFR_IOUT_MAX            = 0xA6;
+    MFR_POUT_MAX            = 0xA7;
+    MFR_TAMBIENT_MAX        = 0xA8;
+    MFR_TAMBIENT_MIN        = 0xA9;
+    MFR_EFFICIENCY_LL       = 0xAA;
+    MFR_EFFICIENCY_HL       = 0xAB;
+
+    USER_DATA_00            = 0xB0;
+    USER_DATA_15            = 0xBF;
+
+    MFR_SPECIFIC_00         = 0xD0;
+    MFR_SPECIFIC_45         = 0xFD;
+
+    MFR_SPECIFIC_COMMAND_EXT = 0xFE;
+    PMBUS_COMMAND_EXT       = 0xFF;
+
+}
+
+
+message In {
+  required uint32 pmbusAddress = 1;
+  repeated Command command = 2;
+}
+
+message Out {
+  required uint32 pmbusAddress = 1;
+  repeated Response response = 2;
+}
+
+message Command {
+    enum Type {
+        READ = 0;
+        WRITE = 1;
+    }
+    required Type type = 1;
+    required uint32 code = 2;
+    required uint32 responseLen = 3;
+    optional bytes data = 4;
+}
+
+message Response {
+    enum Error {
+        BUSY = 0;
+        IO_ERR = 1;
+        INVALID = 2;
+    }
+    required uint32 code = 1;
+    optional bytes data = 2;
+    optional Error error = 3;
+}
+
