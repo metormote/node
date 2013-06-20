@@ -202,7 +202,7 @@
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <OverrideVtorValue />
-    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <eraseonlaunchrule>2</eraseonlaunchrule>
     <com_atmel_avrdbg_tool_jtagicemk3>
       <ToolType>com.atmel.avrdbg.tool.jtagicemk3</ToolType>
       <ToolName>JTAGICE3</ToolName>
@@ -242,7 +242,7 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>1682</port>
+        <port>1040</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>

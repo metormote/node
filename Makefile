@@ -925,7 +925,7 @@ define make-goal-c
 $1/%.o: %.c
 	@echo
 	@echo $(MSG_COMPILING) $$<
-	$(CC) -c $(ALL_CFLAGS) $$< -o $$@
+	$(CC) -c $$(ALL_CFLAGS) $$< -o $$@
 endef
 
 $(foreach bdir,$(SRC_DIR),$(eval $(call make-goal-c,$(bdir))))
@@ -936,7 +936,7 @@ define make-goal-cpp
 $1/%.o : %.cpp
 	@echo
 	@echo $(MSG_COMPILING) $$<
-	$(CXX) -c $(ALL_CXXFLAGS) $$< -o $$@
+	$(CXX) -c $$(ALL_CXXFLAGS) $$< -o $$@
 endef
 
 $(foreach bdir,$(SRC_DIR),$(eval $(call make-goal-cpp,$(bdir))))
@@ -947,7 +947,7 @@ define make-goal-s
 $1/%.o: %.s
 	@echo
 	@echo $(MSG_ASSEMBLING) $$<
-	$(CC) -c $(ALL_ASFLAGS) $$< -o $$@
+	$(CC) -c $$(ALL_ASFLAGS) $$< -o $$@
 endef
 
 $(foreach bdir,$(SRC_DIR),$(eval $(call make-goal-s,$(bdir))))
@@ -978,7 +978,7 @@ clean_list :
 
 
 # Include the dependency files.
--include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
+-include $(shell mkdir .dep) $(wildcard .dep/*)
 
 
 # Listing of phony targets.
